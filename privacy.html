@@ -203,6 +203,7 @@
         .policy-section {
             border-bottom: 1px solid rgba(0, 0, 0, 0.07);
             padding: 2.5rem 0;
+            scroll-margin-top: 100px;
         }
 
         .policy-section:first-child {
@@ -996,6 +997,32 @@
                     </div>
                 </div>
 
+                <div class="policy-section" id="child-safety">
+                    <span id="ps-child-safety" style="scroll-margin-top: 100px;"></span>
+                    <span id="child-safety-standards" style="scroll-margin-top: 100px;"></span>
+                    <h3 id="child-safety-heading" onclick="togglePolicy('child-safety')" aria-expanded="false"
+                        aria-controls="child-safety-body">
+                        Child Safety &amp; Exploitation Standards for Hype
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="child-safety-body" role="region"
+                        aria-labelledby="child-safety-heading">
+                        <p>Hype maintains a zero-tolerance policy regarding the endangerment of children. In strict compliance with global child safety laws and digital platform expectations, we explicitly prohibit any forms of Child Sexual Abuse and Exploitation (CSAE) and Child Sexual Abuse Material (CSAM) on our platform.</p>
+                        <ul>
+                            <li><strong>Prohibited Behavior:</strong> Users are strictly forbidden from uploading, transmitting, or sharing any text, images, or media that depicts or promotes the exploitation, nudity, or abuse of minors.</li>
+                            <li><strong>Enforcement &amp; Reporting:</strong> We actively review reports, will instantly remove any offending content, and immediately ban violating accounts.</li>
+                            <li><strong>Legal Compliance:</strong> In accordance with federal and international laws, confirmed instances of CSAM will be reported directly to the National Center for Missing &amp; Exploited Children (NCMEC) and relevant law enforcement authorities.</li>
+                            <li><strong>Safety Point of Contact:</strong> For questions regarding our moderation procedures, or to flag severe policy concerns, contact our designated child safety team at <a href="mailto:letshype2025@gmail.com" style="color: var(--primary); font-weight: 600;">letshype2025@gmail.com</a>.</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="policy-section" id="ps-international">
                     <h3 id="ps-international-heading" onclick="togglePolicy('ps-international')" aria-expanded="false"
                         aria-controls="ps-international-body">
@@ -1153,6 +1180,7 @@
                 <h4>Safety</h4>
                 <ul>
                     <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="#child-safety">Child Safety Standards</a></li>
                     <li><a href="delete-account.html">Delete Account</a></li>
                     <li><a href="delete-data.html">Delete Specific Data</a></li>
                     <li><a href="#">Terms of Service</a></li>
@@ -1183,6 +1211,7 @@
     <script>
         function togglePolicy(id) {
             const section = document.getElementById(id);
+            if (!section) return;
             const body = document.getElementById(id + '-body');
             const heading = document.getElementById(id + '-heading');
             const isOpen = section.classList.contains('open');
@@ -1190,16 +1219,44 @@
             // Close all
             document.querySelectorAll('.policy-section').forEach(function (s) {
                 s.classList.remove('open');
-                s.querySelector('.policy-body').style.maxHeight = '0';
-                s.querySelector('h3').setAttribute('aria-expanded', 'false');
+                const b = s.querySelector('.policy-body');
+                if (b) b.style.maxHeight = '0';
+                const h = s.querySelector('h3');
+                if (h) h.setAttribute('aria-expanded', 'false');
             });
 
             // Open clicked if it was closed
             if (!isOpen) {
                 section.classList.add('open');
-                body.style.maxHeight = body.scrollHeight + 'px';
-                heading.setAttribute('aria-expanded', 'true');
+                if (body) body.style.maxHeight = body.scrollHeight + 'px';
+                if (heading) heading.setAttribute('aria-expanded', 'true');
             }
+        }
+
+        function openFromHash() {
+            let hash = (window.location.hash || '').replace('#', '');
+            if (!hash) return;
+
+            // Map alias IDs to primary section ID
+            if (hash === 'child-safety-standards' || hash === 'ps-child-safety') {
+                hash = 'child-safety';
+            }
+
+            const section = document.getElementById(hash);
+            if (section && section.classList.contains('policy-section')) {
+                if (!section.classList.contains('open')) {
+                    togglePolicy(hash);
+                }
+                setTimeout(function () {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', openFromHash);
+        window.addEventListener('hashchange', openFromHash);
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            openFromHash();
         }
     </script>
 </body>
