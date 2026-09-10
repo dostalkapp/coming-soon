@@ -1,11 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy & Security | Hype</title>
+    <title>Privacy &amp; Security | Hype</title>
+    <meta name="description"
+        content="Your privacy on Hype — learn how we protect your messages, events, media, group chats, and status updates. Transparent, compliant, and always on your side.">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Privacy Page Extras ── */
+
+        .privacy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(76, 176, 80, 0.12);
+            border: 1px solid rgba(76, 176, 80, 0.25);
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            margin-bottom: 2rem;
+            letter-spacing: 0.03em;
+        }
+
+        .privacy-badge svg {
+            flex-shrink: 0;
+        }
+
+        /* Pillars grid */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 5rem auto 0;
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: 32px;
+            padding: 3rem 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(76, 176, 80, 0.1);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.75rem;
+            color: var(--primary);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pillar-card p {
+            font-size: 1rem;
+        }
+
+        /* Feature-privacy rows */
+        .feature-privacy-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-privacy-row:last-child {
+            border-bottom: none;
+        }
+
+        .feature-privacy-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .fpr-label {
+            background: rgba(76, 176, 80, 0.1);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            display: inline-block;
+            margin-bottom: 1.25rem;
+        }
+
+        .fpr-text {
+            flex: 1;
+        }
+
+        .fpr-text h2 {
+            font-size: 2.25rem;
+        }
+
+        .fpr-text p {
+            font-size: 1.1rem;
+            margin-top: 1.25rem;
+        }
+
+        .fpr-bullets {
+            list-style: none;
+            margin-top: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .fpr-bullets li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .fpr-bullets li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            background: rgba(76, 176, 80, 0.15);
+            border-radius: 50%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234CB050' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-top: 2px;
+        }
+
+        .fpr-visual {
+            flex: 1;
+            background: var(--bg-alt);
+            border-radius: 40px;
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .fpr-visual-stat {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .fpr-visual-stat-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(76, 176, 80, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .fpr-visual-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .fpr-visual-stat-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-top: 0.2rem;
+        }
+
+        /* Policy accordion */
+        .policy-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .policy-section {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+            padding: 2.5rem 0;
+        }
+
+        .policy-section:first-child {
+            padding-top: 0;
+        }
+
+        .policy-section h3 {
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            gap: 1rem;
+        }
+
+        .policy-section h3 .toggle-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--bg-alt);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
+            color: var(--primary);
+        }
+
+        .policy-section.open h3 .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .policy-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .policy-body p,
+        .policy-body ul {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-top: 1.25rem;
+        }
+
+        .policy-body ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        .policy-body ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Commitment strip */
+        .commitment-strip {
+            background: linear-gradient(135deg, #f0faf0 0%, #e8f5e9 100%);
+            border-radius: 40px;
+            padding: 5rem;
+            text-align: center;
+            margin: 0 5%;
+        }
+
+        .commitment-strip h2 {
+            font-size: 2.5rem;
+        }
+
+        .commitment-strip p {
+            font-size: 1.2rem;
+            margin: 1.5rem auto 0;
+        }
+
+        .commitment-items {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .commitment-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            max-width: 180px;
+        }
+
+        .commitment-item-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .commitment-item span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .pillars-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .feature-privacy-row,
+            .feature-privacy-row.reverse {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .commitment-strip {
+                padding: 4rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .commitment-items {
+                gap: 2rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <header id="header" class="scrolled">
@@ -21,48 +355,750 @@
     </header>
 
     <main>
+
+        <!-- Hero -->
         <section class="reveal-up" style="padding-top: 15rem; text-align: center;">
-            <img src="security-lock.png" alt="Privacy Lock" style="width: 120px; margin-bottom: 2rem;">
-            <h1>Privacy is in our <span style="color: var(--primary);">code.</span></h1>
-            <p class="text-center">Your privacy is not an option; it's the standard. We believe your data should belong only to you.</p>
+            <div class="privacy-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Privacy &amp; Data Protection
+            </div>
+            <h1>Your data stays<br><span style="color: var(--primary);">yours. Period.</span></h1>
+            <p class="text-center">We built Hype on a simple belief: the people you talk to, the events you attend, and
+                the moments you share belong to you &mdash; not us. Here&rsquo;s exactly how we keep it that way.</p>
         </section>
 
-        <!-- Deep Dive Section -->
-        <section style="background: var(--bg-alt); margin: 0 5%; border-radius: 60px;">
-            <div style="max-width: 900px; margin: 0 auto;">
-                <div class="reveal-up" style="margin-bottom: 6rem;">
-                    <h2>End-to-End Encryption</h2>
-                    <p style="margin-top: 2rem;">Hype uses the **Signal Protocol** for all personal messaging. When you send a message, it’s scrambled into an unbreakable code that can only be unlocked by the recipient’s device. No one else has the keys—including us.</p>
+        <!-- Security Pillars -->
+        <section>
+            <div style="text-align: center;">
+                <h2>Built secure from day one</h2>
+                <p class="text-center">Every feature &mdash; from group events to status updates &mdash; was designed
+                    with privacy as a non-negotiable foundation.</p>
+            </div>
+            <div class="pillars-grid">
+
+                <div class="pillar-card reveal-up">
+                    <div class="pillar-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                    </div>
+                    <h3>Secure Data Storage</h3>
+                    <p>Your account data, media, and messages are stored using AES-256 encryption at rest on servers
+                        located in compliant, certified data centres.</p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
-                    <div class="reveal-up">
-                        <h3>Zero Knowledge</h3>
-                        <p style="font-size: 1.1rem;">We don’t store metadata. We don’t track who you talk to, when you talk to them, or what your location is. You are a ghost in our system.</p>
+                <div class="pillar-card reveal-up">
+                    <div class="pillar-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                            <path d="M4.93 4.93a10 10 0 0 0 0 14.14" />
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                            <path d="M8.46 8.46a5 5 0 0 0 0 7.07" />
+                        </svg>
                     </div>
-                    <div class="reveal-up">
-                        <h3>Open Source Foundation</h3>
-                        <p style="font-size: 1.1rem;">Our encryption libraries are open for public audit. Anyone can verify that we do exactly what we say we do.</p>
-                    </div>
-                    <div class="reveal-up">
-                        <h3>Biometric Protection</h3>
-                        <p style="font-size: 1.1rem;">Layer your security with FaceID or TouchID. Even if someone has your phone, they don't have your conversations.</p>
-                    </div>
-                    <div class="reveal-up">
-                        <h3>Anti-Spam Shield</h3>
-                        <p style="font-size: 1.1rem;">AI-powered filters stop scammers and bots before they reach your inbox, without ever reading your private content.</p>
-                    </div>
+                    <h3>Secure Transmission</h3>
+                    <p>All data &mdash; messages, media, event details, and status updates &mdash; is transmitted over
+                        TLS 1.3, protecting it in transit between your device and our servers.</p>
                 </div>
+
+                <div class="pillar-card reveal-up">
+                    <div class="pillar-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <h3>Minimal Data Collection</h3>
+                    <p>We collect only what's strictly necessary for the app to work. We do not build advertising
+                        profiles, sell your data, or share it with third-party marketers.</p>
+                </div>
+
+                <div class="pillar-card reveal-up">
+                    <div class="pillar-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg>
+                    </div>
+                    <h3>No Ad Tracking</h3>
+                    <p>We do not use your conversations, media, events, or update history for advertising. You are a
+                        person, not a data point.</p>
+                </div>
+
+                <div class="pillar-card reveal-up">
+                    <div class="pillar-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h3>Biometric App Lock</h3>
+                    <p>Protect the entire app with Face ID or Touch ID. Even if someone has your unlocked phone, your
+                        chats and events stay locked behind your biometrics.</p>
+                </div>
+
+                <div class="pillar-card reveal-up">
+                    <div class="pillar-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <h3>Transparent Controls</h3>
+                    <p>You always decide who sees what. Every privacy setting is clearly labelled and easy to change
+                        &mdash; no dark patterns, no hidden defaults.</p>
+                </div>
+
             </div>
         </section>
 
+        <!-- Feature-by-Feature Privacy -->
+        <section
+            style="background: var(--bg-alt); margin: 0 5%; border-radius: 60px; padding-top: 7rem; padding-bottom: 7rem;">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">
+                <h2>Privacy, feature by feature</h2>
+                <p class="text-center">We walk you through exactly how your data is handled in every part of Hype
+                    &mdash; no fine print, no surprises.</p>
+            </div>
+
+            <!-- Events -->
+            <div class="feature-privacy-row reveal-up">
+                <div class="fpr-text">
+                    <span class="fpr-label">Events</span>
+                    <h2>Group events, private by design</h2>
+                    <p>Events on Hype are tightly scoped to the group they belong to. Only invited group members can see
+                        event details, shared media, participant lists, expense breakdowns, polls, and in-event
+                        discussions. Nothing leaks outside the group.</p>
+                    <ul class="fpr-bullets">
+                        <li>Event details (name, date, location) are visible only to invited participants</li>
+                        <li>Shared media, photos and files uploaded in an event are accessible only within that event
+                        </li>
+                        <li>Expense records and splits are private to event members only</li>
+                        <li>Polls and votes within an event are shown only to participants</li>
+                        <li>In-event discussions remain inside the event and are not shared to the broader group feed
+                        </li>
+                        <li>Event creators can remove participants; removed members lose access immediately</li>
+                        <li>You can delete your own contribution to an event (messages, media, expense entries) at any
+                            time</li>
+                        <li>Location data attached to an event is stored only with your explicit permission</li>
+                    </ul>
+                </div>
+                <div class="fpr-visual">
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Event Visibility</div>
+                            <div class="fpr-visual-stat-value">Invited members only</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Shared Media</div>
+                            <div class="fpr-visual-stat-value">Scoped to event, not public</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Expense Data</div>
+                            <div class="fpr-visual-stat-value">Private between members</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 11 12 14 22 4" />
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Polls &amp; Votes</div>
+                            <div class="fpr-visual-stat-value">Visible to participants only</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1-to-1 Chat -->
+            <div class="feature-privacy-row reverse reveal-up">
+                <div class="fpr-text">
+                    <span class="fpr-label">1-to-1 Chat</span>
+                    <h2>Private conversations that stay private</h2>
+                    <p>Your direct messages are just that &mdash; direct. No group can see them, no algorithm reads
+                        them, and no one outside your conversation has access. You also have full control over what you
+                        share and what you keep.</p>
+                    <ul class="fpr-bullets">
+                        <li>Messages, photos, videos, voice notes, files, locations, and contacts are shared only with
+                            the recipient</li>
+                        <li>Voice notes are not transcribed or stored after delivery unless you explicitly save them
+                        </li>
+                        <li>Location sharing is opt-in and real-time only &mdash; we do not log location history</li>
+                        <li>Contact cards shared in chat do not give Hype access to your full address book</li>
+                        <li>You can delete messages for both sides at any time</li>
+                        <li>Disappearing messages: set any conversation to auto-delete after 24 hours, 7 days, or 30
+                            days</li>
+                        <li>Profile view privacy &mdash; you choose who can see your profile photo, bio, and last-seen
+                            status</li>
+                        <li>Block and report any contact instantly; blocked users cannot see your profile or updates
+                        </li>
+                    </ul>
+                </div>
+                <div class="fpr-visual">
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Message Access</div>
+                            <div class="fpr-visual-stat-value">Sender &amp; recipient only</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Live Location</div>
+                            <div class="fpr-visual-stat-value">Opt-in, no history logged</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6" />
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Message Deletion</div>
+                            <div class="fpr-visual-stat-value">Delete for everyone, anytime</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <line x1="23" y1="11" x2="17" y2="11" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Block &amp; Report</div>
+                            <div class="fpr-visual-stat-value">Instant, effective, anonymous</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group Chat -->
+            <div class="feature-privacy-row reveal-up">
+                <div class="fpr-text">
+                    <span class="fpr-label">Group Chat</span>
+                    <h2>Groups you trust, controls you keep</h2>
+                    <p>Group chats on Hype come with robust admin controls and participant privacy. Creating events or
+                        running polls inside a group doesn't expose your personal data &mdash; only what you choose to
+                        contribute.</p>
+                    <ul class="fpr-bullets">
+                        <li>Group membership is private &mdash; outsiders cannot see who is in your group</li>
+                        <li>Only admins can add or remove members and change group settings</li>
+                        <li>Events and polls created in a group are visible only to group members</li>
+                        <li>Leaving a group removes your future messages; you may request deletion of past messages</li>
+                        <li>Group media gallery is accessible to current members only &mdash; removed members lose
+                            access</li>
+                        <li>Admins can restrict who can send messages, create events, or run polls</li>
+                        <li>You can mute, archive, or leave any group without notifying other members</li>
+                        <li>Report a group or a member directly to our Trust &amp; Safety team from within the app</li>
+                    </ul>
+                </div>
+                <div class="fpr-visual">
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Membership</div>
+                            <div class="fpr-visual-stat-value">Invisible to non-members</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3" />
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                                <path d="M4.93 4.93a10 10 0 0 0 0 14.14" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Admin Controls</div>
+                            <div class="fpr-visual-stat-value">Full permission management</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Group Media</div>
+                            <div class="fpr-visual-stat-value">Access revoked on removal</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Silent Exit</div>
+                            <div class="fpr-visual-stat-value">Leave without notification</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Updates -->
+            <div class="feature-privacy-row reverse reveal-up">
+                <div class="fpr-text">
+                    <span class="fpr-label">Updates</span>
+                    <h2>Share moments on your terms</h2>
+                    <p>Updates (status posts) let you share photos and videos with your contacts for 24 hours &mdash;
+                        and then they're gone. You decide the audience for every single update you post.</p>
+                    <ul class="fpr-bullets">
+                        <li>Updates expire and are permanently deleted after 24 hours from our servers</li>
+                        <li>You control the audience: all contacts, a custom list, or specific people only</li>
+                        <li>Hide your updates from specific contacts without blocking them</li>
+                        <li>You can see who viewed your update &mdash; viewers cannot see who else viewed it</li>
+                        <li>Updates are not indexed, publicly searchable, or accessible via link</li>
+                        <li>Mute another user's updates without unfriending or blocking them</li>
+                        <li>Delete any of your updates at any time before the 24-hour window closes</li>
+                        <li>Your update content is never used for advertising or profiling purposes</li>
+                    </ul>
+                </div>
+                <div class="fpr-visual">
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Auto-Deletion</div>
+                            <div class="fpr-visual-stat-value">Purged after 24 hours</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Audience Control</div>
+                            <div class="fpr-visual-stat-value">Per-update privacy settings</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                <line x1="1" y1="1" x2="23" y2="23" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Hidden From</div>
+                            <div class="fpr-visual-stat-value">Block without unfriending</div>
+                        </div>
+                    </div>
+                    <div class="fpr-visual-stat">
+                        <div class="fpr-visual-stat-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                                <line x1="6" y1="1" x2="6" y2="4" />
+                                <line x1="10" y1="1" x2="10" y2="4" />
+                                <line x1="14" y1="1" x2="14" y2="4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="fpr-visual-stat-label">Not Searchable</div>
+                            <div class="fpr-visual-stat-value">No public index or link access</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Privacy Policy Accordion -->
+        <section class="reveal-up">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 5rem;">
+                <h2>Our Privacy Policy, plain and simple</h2>
+                <p class="text-center">Legal language made human. Expand any section to understand exactly how we handle
+                    your data.</p>
+            </div>
+            <div class="policy-wrap">
+
+                <div class="policy-section open" id="ps-collect">
+                    <h3 id="ps-collect-heading" onclick="togglePolicy('ps-collect')" aria-expanded="true"
+                        aria-controls="ps-collect-body">
+                        What data do we collect?
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-collect-body" role="region" aria-labelledby="ps-collect-heading"
+                        style="max-height: 600px;">
+                        <p>We collect only the minimum data needed to operate the service:</p>
+                        <ul>
+                            <li><strong>Account information:</strong> your phone number and optional display name and
+                                profile photo.</li>
+                            <li><strong>Messages &amp; media:</strong> stored on our servers only to deliver them to the
+                                intended recipient. You control retention via disappearing messages and manual deletion.
+                            </li>
+                            <li><strong>Event data:</strong> event details, participant lists, shared media, expenses,
+                                and poll responses &mdash; scoped to event members only.</li>
+                            <li><strong>Device &amp; app diagnostics:</strong> crash reports and performance data to
+                                improve the app, collected anonymously without linking to your identity.</li>
+                            <li><strong>Usage metadata:</strong> timestamps of app activity to detect fraud and abuse,
+                                not linked to specific messages or conversations.</li>
+                        </ul>
+                        <p>We do <strong>not</strong> collect: your full contact list, your browsing history, your
+                            precise GPS location history, or any data for advertising purposes.</p>
+                    </div>
+                </div>
+
+                <div class="policy-section" id="ps-use">
+                    <h3 id="ps-use-heading" onclick="togglePolicy('ps-use')" aria-expanded="false"
+                        aria-controls="ps-use-body">
+                        How do we use your data?
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-use-body" role="region" aria-labelledby="ps-use-heading">
+                        <p>Your data is used solely to power the features you choose to use:</p>
+                        <ul>
+                            <li>Delivering messages, media, voice notes, and files to the intended recipient(s).</li>
+                            <li>Managing group memberships, event access, and poll results.</li>
+                            <li>Showing updates only to the audience you select and auto-deleting them after 24 hours.
+                            </li>
+                            <li>Providing account recovery and security notifications (e.g., new device login alerts).
+                            </li>
+                            <li>Detecting and preventing spam, abuse, and policy violations.</li>
+                            <li>Improving the app through anonymised, aggregated diagnostics.</li>
+                        </ul>
+                        <p>We do <strong>not</strong> use your data to serve targeted advertisements, build behavioural
+                            profiles, or train third-party AI models.</p>
+                    </div>
+                </div>
+
+                <div class="policy-section" id="ps-share">
+                    <h3 id="ps-share-heading" onclick="togglePolicy('ps-share')" aria-expanded="false"
+                        aria-controls="ps-share-body">
+                        Do we share your data with anyone?
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-share-body" role="region" aria-labelledby="ps-share-heading">
+                        <p>We do not sell or rent your personal data. Sharing is limited to:</p>
+                        <ul>
+                            <li><strong>Service providers:</strong> infrastructure partners (hosting, cloud storage) who
+                                process data solely on our behalf under strict data processing agreements.</li>
+                            <li><strong>Legal obligations:</strong> we may disclose data if required by a valid court
+                                order or applicable law. We will notify you where legally permitted to do so.</li>
+                            <li><strong>Safety:</strong> if we identify an imminent threat to life or safety, we may
+                                share limited data with appropriate authorities.</li>
+                        </ul>
+                        <p>We do not share your data with advertisers, analytics brokers, or social networks.</p>
+                    </div>
+                </div>
+
+                <div class="policy-section" id="ps-rights">
+                    <h3 id="ps-rights-heading" onclick="togglePolicy('ps-rights')" aria-expanded="false"
+                        aria-controls="ps-rights-body">
+                        Your rights &amp; choices
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-rights-body" role="region" aria-labelledby="ps-rights-heading">
+                        <p>Depending on your jurisdiction, you have the right to:</p>
+                        <ul>
+                            <li><strong>Access:</strong> request a copy of the personal data we hold about you.</li>
+                            <li><strong>Rectification:</strong> correct inaccurate data (e.g., your display name or
+                                profile photo) directly in the app.</li>
+                            <li><strong>Erasure:</strong> delete your account and associated data. Most data is removed
+                                immediately; residual backups are purged within 90 days.</li>
+                            <li><strong>Portability:</strong> export your chat history and media in a machine-readable
+                                format.</li>
+                            <li><strong>Restriction:</strong> object to certain processing activities (e.g., anonymised
+                                diagnostics).</li>
+                            <li><strong>Withdrawal of consent:</strong> turn off optional permissions (camera,
+                                microphone, location) in your device settings at any time.</li>
+                        </ul>
+                        <p>To exercise any right, contact us at <a href="mailto:privacy@hype.app"
+                                style="color: var(--primary); font-weight: 600;">privacy@hype.app</a>. We respond within
+                            30 days.</p>
+                    </div>
+                </div>
+
+                <div class="policy-section" id="ps-retention">
+                    <h3 id="ps-retention-heading" onclick="togglePolicy('ps-retention')" aria-expanded="false"
+                        aria-controls="ps-retention-body">
+                        How long do we keep your data?
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-retention-body" role="region"
+                        aria-labelledby="ps-retention-heading">
+                        <ul>
+                            <li><strong>Messages &amp; media:</strong> retained until you or the recipient deletes them,
+                                or until the disappearing-message timer expires.</li>
+                            <li><strong>Updates (status):</strong> automatically and permanently deleted 24 hours after
+                                posting.</li>
+                            <li><strong>Event data:</strong> retained while the event exists. Deleting an event removes
+                                all associated data for all members.</li>
+                            <li><strong>Account data:</strong> retained while your account is active. On deletion,
+                                account data is removed immediately; backup copies are purged within 90 days.</li>
+                            <li><strong>Diagnostics &amp; logs:</strong> retained for up to 12 months in anonymised form
+                                for service-improvement purposes, then permanently deleted.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="policy-section" id="ps-minors">
+                    <h3 id="ps-minors-heading" onclick="togglePolicy('ps-minors')" aria-expanded="false"
+                        aria-controls="ps-minors-body">
+                        Children &amp; minors
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-minors-body" role="region" aria-labelledby="ps-minors-heading">
+                        <p>Hype is intended for users aged <strong>13 and above</strong> (or the applicable minimum age
+                            in your country). We do not knowingly collect personal data from anyone below this age
+                            threshold. If you believe a minor has created an account, please contact us at <a
+                                href="mailto:privacy@hype.app"
+                                style="color: var(--primary); font-weight: 600;">privacy@hype.app</a> and we will remove
+                            it promptly.</p>
+                    </div>
+                </div>
+
+                <div class="policy-section" id="ps-international">
+                    <h3 id="ps-international-heading" onclick="togglePolicy('ps-international')" aria-expanded="false"
+                        aria-controls="ps-international-body">
+                        International data transfers
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-international-body" role="region"
+                        aria-labelledby="ps-international-heading">
+                        <p>To deliver a fast and reliable service, your data may be processed in data centres located
+                            outside your home country. Where such transfers occur, we apply appropriate safeguards
+                            &mdash; such as Standard Contractual Clauses (SCCs) &mdash; to ensure your data receives the
+                            same level of protection regardless of location.</p>
+                    </div>
+                </div>
+
+                <div class="policy-section" id="ps-changes">
+                    <h3 id="ps-changes-heading" onclick="togglePolicy('ps-changes')" aria-expanded="false"
+                        aria-controls="ps-changes-body">
+                        Changes to this policy
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-changes-body" role="region" aria-labelledby="ps-changes-heading">
+                        <p>We may update this Privacy Policy from time to time. When we make material changes, we will
+                            notify you via an in-app notification and update the "Last updated" date below. Continuing
+                            to use Hype after a change constitutes acceptance of the revised policy. The current policy
+                            is always available at hype.app/privacy.</p>
+                        <p style="margin-top: 1rem;"><strong>Last updated:</strong> September 2026</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Our Commitment -->
+        <div class="commitment-strip reveal-up">
+            <h2>Our commitment to you</h2>
+            <p class="text-center">These aren't just words &mdash; they're promises built into every line of code.</p>
+            <div class="commitment-items">
+                <div class="commitment-item">
+                    <div class="commitment-item-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                    </div>
+                    <span>We never sell your data</span>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-item-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="23" y1="11" x2="17" y2="11" />
+                        </svg>
+                    </div>
+                    <span>No advertising profiles</span>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-item-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 11 12 14 22 4" />
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                        </svg>
+                    </div>
+                    <span>You control your data</span>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-item-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <span>Transparent, plain-language policy</span>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-item-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <span>AES-256 encryption at rest</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact CTA -->
         <section class="reveal-up" style="text-align: center;">
-            <h2>We don't sell your data. <br>We don't even have it.</h2>
-            <p class="text-center" style="margin-top: 2rem;">Unlike other platforms, Hype is funded by users, not advertisers. This ensures our interests are always aligned with your privacy.</p>
-            <div style="margin-top: 4rem;">
-                <a href="#" style="text-decoration: underline; color: var(--text-main); font-weight: 600;">Read our Whitepaper (PDF)</a>
+            <h2>Have a privacy question?</h2>
+            <p class="text-center" style="margin-top: 1.5rem;">Our dedicated Privacy team is here to help. Reach out and
+                we'll respond within 30 days.</p>
+            <div style="margin-top: 3rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:letshype2025@gmail.com" id="btn-privacy-email"
+                    style="display: inline-flex; align-items: center; gap: 0.6rem; background: var(--primary); color: white; padding: 1rem 2.5rem; border-radius: 100px; font-weight: 600; text-decoration: none; font-size: 1rem; box-shadow: 0 10px 20px rgba(76,176,80,0.25); transition: var(--transition-smooth);"
+                    onmouseover="this.style.transform='translateY(-3px)'"
+                    onmouseout="this.style.transform='translateY(0)'">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Get in Touch
+                </a>
             </div>
         </section>
+
     </main>
 
     <footer>
@@ -71,29 +1107,69 @@
                 <div class="logo-container" style="margin-bottom: 2rem;">
                     <img src="logo.png" alt="Hype" id="business-logo">
                 </div>
+                <p style="font-size: 0.9rem;">The social platform built around people, not data.</p>
             </div>
             <div class="footer-col">
-                <h4>Safety</h4>
+                <h4>Product</h4>
                 <ul>
-                    <li><a href="privacy.html">Security Center</a></li>
-                    <li><a href="#">Audit Reports</a></li>
-                    <li><a href="#">Compliance</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li><a href="privacy.html">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <ul>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">Instagram</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <div style="font-size: 0.9rem; color: var(--text-muted);">&copy; 2026 Hype.</div>
-            <a href="index.html" style="text-decoration: none; color: var(--primary); font-weight: 600;">Back to Home</a>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">&copy; 2026 Hype. All rights reserved.</div>
+            <a href="index.html" style="text-decoration: none; color: var(--primary); font-weight: 600;">Back to
+                Home</a>
         </div>
     </footer>
 
     <script src="main.js"></script>
+    <script>
+        function togglePolicy(id) {
+            const section = document.getElementById(id);
+            const body = document.getElementById(id + '-body');
+            const heading = document.getElementById(id + '-heading');
+            const isOpen = section.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.policy-section').forEach(function (s) {
+                s.classList.remove('open');
+                s.querySelector('.policy-body').style.maxHeight = '0';
+                s.querySelector('h3').setAttribute('aria-expanded', 'false');
+            });
+
+            // Open clicked if it was closed
+            if (!isOpen) {
+                section.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + 'px';
+                heading.setAttribute('aria-expanded', 'true');
+            }
+        }
+    </script>
 </body>
+
 </html>
