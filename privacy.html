@@ -342,15 +342,16 @@
 
 <body>
 
-    <header id="header" class="scrolled">
+    <header id="header">
         <div class="logo-container">
-            <img src="logo.png" alt="Hype" id="business-logo">
+            <a href="index.html"><img src="logo.png" alt="Hype" id="business-logo">
+            </a>
         </div>
         <nav>
             <a href="index.html">Home</a>
             <a href="features.html">Features</a>
             <a href="privacy.html" class="active">Privacy</a>
-            <a href="download.html" class="btn-download">Download</a>
+            <a href="#" class="btn-download">Download</a>
         </nav>
     </header>
 
@@ -918,8 +919,8 @@
                             <li><strong>Withdrawal of consent:</strong> turn off optional permissions (camera,
                                 microphone, location) in your device settings at any time.</li>
                         </ul>
-                        <p>To exercise any right, contact us at <a href="mailto:privacy@hype.app"
-                                style="color: var(--primary); font-weight: 600;">privacy@hype.app</a>. We respond within
+                        <p>To exercise any right, contact us at <a href="mailto:letshype2025@gmail.com"
+                                style="color: var(--primary); font-weight: 600;">letshype2025@gmail.com</a>. We respond within
                             30 days.</p>
                     </div>
                 </div>
@@ -953,6 +954,25 @@
                     </div>
                 </div>
 
+                <div class="policy-section" id="ps-delete">
+                    <h3 id="ps-delete-heading" onclick="togglePolicy('ps-delete')" aria-expanded="false"
+                        aria-controls="ps-delete-body">
+                        Can I delete my account?
+                        <span class="toggle-icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </span>
+                    </h3>
+                    <div class="policy-body" id="ps-delete-body" role="region" aria-labelledby="ps-delete-heading">
+                        <p>Yes, you can easily delete your account and all associated data at any time directly in the mobile app by going to <strong>Settings &gt; Account &gt; Delete My Account</strong>.</p>
+                        <p style="margin-top: 1rem;">If you cannot access the app or prefer to submit a request on the web, you can submit an online deletion request and read full details about what is deleted or kept on our <a href="delete-account.html" style="color: var(--primary); font-weight: 600; text-decoration: underline;">Account Deletion Request page</a>.</p>
+                        <p style="margin-top: 1rem;">Once submitted, your personal profile, messages, group memberships, updates, and events are deleted immediately, and any residual encrypted backup copies are completely purged within 90 days.</p>
+                    </div>
+                </div>
+
                 <div class="policy-section" id="ps-minors">
                     <h3 id="ps-minors-heading" onclick="togglePolicy('ps-minors')" aria-expanded="false"
                         aria-controls="ps-minors-body">
@@ -969,8 +989,8 @@
                         <p>Hype is intended for users aged <strong>13 and above</strong> (or the applicable minimum age
                             in your country). We do not knowingly collect personal data from anyone below this age
                             threshold. If you believe a minor has created an account, please contact us at <a
-                                href="mailto:privacy@hype.app"
-                                style="color: var(--primary); font-weight: 600;">privacy@hype.app</a> and we will remove
+                                href="mailto:letshype2025@gmail.com"
+                                style="color: var(--primary); font-weight: 600;">letshype2025@gmail.com</a> and we will remove
                             it promptly.</p>
                     </div>
                 </div>
@@ -1012,7 +1032,7 @@
                         <p>We may update this Privacy Policy from time to time. When we make material changes, we will
                             notify you via an in-app notification and update the "Last updated" date below. Continuing
                             to use Hype after a change constitutes acceptance of the revised policy. The current policy
-                            is always available at hype.app/privacy.</p>
+                            is always available at letshype.in/privacy.html.</p>
                         <p style="margin-top: 1rem;"><strong>Last updated:</strong> September 2026</p>
                     </div>
                 </div>
@@ -1084,7 +1104,7 @@
             <h2>Have a privacy question?</h2>
             <p class="text-center" style="margin-top: 1.5rem;">Our dedicated Privacy team is here to help. Reach out and
                 we'll respond within 30 days.</p>
-            <div style="margin-top: 3rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <div style="margin-top: 3rem; display: flex; justify-content: center;">
                 <a href="mailto:letshype2025@gmail.com" id="btn-privacy-email"
                     style="display: inline-flex; align-items: center; gap: 0.6rem; background: var(--primary); color: white; padding: 1rem 2.5rem; border-radius: 100px; font-weight: 600; text-decoration: none; font-size: 1rem; box-shadow: 0 10px 20px rgba(76,176,80,0.25); transition: var(--transition-smooth);"
                     onmouseover="this.style.transform='translateY(-3px)'"
@@ -1107,7 +1127,8 @@
                 <div class="logo-container" style="margin-bottom: 2rem;">
                     <img src="logo.png" alt="Hype" id="business-logo">
                 </div>
-                <p style="font-size: 0.9rem;">The social platform built around people, not data.</p>
+                <p style="font-size: 0.9rem;">The future of secure communication, designed for weightless interaction.
+                </p>
             </div>
             <div class="footer-col">
                 <h4>Product</h4>
@@ -1115,6 +1136,7 @@
                     <li><a href="features.html">Features</a></li>
                     <li><a href="download.html">Download</a></li>
                     <li><a href="privacy.html">Security</a></li>
+                    <li><a href="#">Business</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1122,28 +1144,35 @@
                 <ul>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Careers</a></li>
+                    <li><a href="#">Brand Center</a></li>
+                    <li><a href="#">Blog</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Legal</h4>
+                <h4>Safety</h4>
                 <ul>
                     <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
                     <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Security Center</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Social</h4>
                 <ul>
-                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">Twitter</a></li>
                     <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <div style="font-size: 0.9rem; color: var(--text-muted);">&copy; 2026 Hype. All rights reserved.</div>
-            <a href="index.html" style="text-decoration: none; color: var(--primary); font-weight: 600;">Back to
-                Home</a>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">&copy; 2026 Hype Messenger. All rights reserved.
+            </div>
+            <div style="display: flex; gap: 2rem;">
+                <a href="#" style="text-decoration: none; color: var(--text-muted); font-size: 0.9rem;">English (US)</a>
+            </div>
         </div>
     </footer>
 
